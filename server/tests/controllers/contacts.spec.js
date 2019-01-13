@@ -27,6 +27,10 @@ describe('contacts', () => {
     );
   });
 
+  afterAll(() => {
+    Contact.close();
+  });
+
   describe('/POST requests', () => {
     it('should return a contacts object if successful', async () => {
       const contact = {
