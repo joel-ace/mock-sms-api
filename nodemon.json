@@ -1,0 +1,6 @@
+{
+  "events": {
+    "restart": ""
+	},
+	"watch": ["server/", "app.js"]
+}
