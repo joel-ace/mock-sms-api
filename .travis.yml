@@ -12,7 +12,3 @@ script:
   - "npm test"
 services:
   - postgresql
-env:
-  global:
-    - PGPORT=5432
-    - PGPASSWORD="qwerty1234"
