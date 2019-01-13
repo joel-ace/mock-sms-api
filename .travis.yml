@@ -11,8 +11,8 @@ before_script:
 script:
   - "npm test"
 services:
-	- postgresql
+  - postgresql
 env:
   global:
-	- PGPORT=5432
-	- PGPASSWORD="qwerty1234"
+    - PGPORT=5432
+    - PGPASSWORD="qwerty1234"
