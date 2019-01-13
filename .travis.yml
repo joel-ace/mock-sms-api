@@ -9,8 +9,8 @@ addons:
 before_script:
   - "npm install"
   - "npm install -g sequelize-cli"
-  - "psql -c 'create database test;' -U postgres"
-  - "cp server/config/database.yml.travis config/database.yml"
+  - "psql -c 'create database sms-express-test;' -U postgres"
+  - export PGPASSWORD="qwerty1234"
 script:
   - "npm test"
 services:
