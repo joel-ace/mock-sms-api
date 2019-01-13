@@ -5,7 +5,7 @@ import { Contact } from '../../models';
 describe('contacts', () => {
   const nanId = 'hkjkj';
   const notExistId = 300;
-  const maxOutId = 5000000000000000;
+  const maxOutId = 5000000000000000; // to cause a sequelize error
 
   beforeAll(async () => {
     await Contact.sync({ force: true });
