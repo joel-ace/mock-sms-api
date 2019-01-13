@@ -10,7 +10,7 @@ before_script:
   - "npm install"
   - "npm install -g sequelize-cli"
   - "psql -c 'create database test;' -U postgres"
-  - "cp config/database.yml.travis config/database.yml"
+  - "cp server/config/database.yml.travis server/config/database.yml"
 script:
   - "npm test"
 services:
