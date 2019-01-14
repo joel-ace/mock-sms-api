@@ -1,7 +1,6 @@
 import request from 'supertest';
 import app from '../../../app';
 import { Contact } from '../../models';
-import { Message } from '../../models';
 import testData from '../testData';
 
 describe('contacts', () => {
@@ -11,7 +10,6 @@ describe('contacts', () => {
 
   beforeAll(async () => {
     await Contact.bulkCreate(testData.contacts);
-    await Message.bulkCreate(testData.messages);
   });
 
   afterAll(() => {

@@ -8,6 +8,11 @@ describe('Messages', () => {
   const notExistId = 300;
   const maxOutId = 5000000000000000; // to cause a sequelize error
 
+  beforeAll(async () => {
+    await Message.bulkCreate(testData.messages);
+  });
+
+
   afterAll(() => {
     Message.close();
   });
