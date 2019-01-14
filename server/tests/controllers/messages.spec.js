@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { Message } from '../../models';
 import app from '../../../app';
 import testData from '../testData';
 
@@ -6,6 +7,10 @@ describe('Messages', () => {
   const nanId = 'hkjkj';
   const notExistId = 300;
   const maxOutId = 5000000000000000; // to cause a sequelize error
+
+  afterAll(() => {
+    Message.close();
+  });
 
   describe('/POST requests', () => {
     it('should return an sms object if successful', async () => {
@@ -135,9 +140,9 @@ describe('Messages', () => {
       expect(response.body.sms[0].message).toBe('this is a message');
       expect(response.body.sms[0].sender.name).toBe('Ade');
     });
-	});
+  });
 
-	describe('/GET received messages', () => {
+  describe('/GET received messages', () => {
     it('should return a 400 status if requested contact id is not a number', async () => {
       expect.assertions(3);
       const response = await request(app).get(`/api/v1/contacts/${nanId}/sms/received`);
@@ -154,7 +159,7 @@ describe('Messages', () => {
       expect(response.body.message).toBe('We encountered an error. Please try again later');
     });
 
-    it('should return when an array of messages received by a contact', async () => {
+    it('should return an array of messages received by a contact', async () => {
       const contactId = 1;
       expect.assertions(6);
       const response = await request(app).get(`/api/v1/contacts/${contactId}/sms/received`);
