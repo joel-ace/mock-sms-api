@@ -15,5 +15,16 @@ export default (sequelize, DataTypes) => {
       }
     }
   });
+
+  Contact.associate = (models) => {
+    Contact.hasMany(models.Message, {
+      foreignKey: 'senderId'
+    });
+
+    Contact.hasMany(models.Message, {
+      foreignKey: 'receiverId'
+    });
+  };
+
   return Contact;
 };

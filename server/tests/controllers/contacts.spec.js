@@ -1,6 +1,8 @@
 import request from 'supertest';
 import app from '../../../app';
 import { Contact } from '../../models';
+import { Message } from '../../models';
+import testData from '../testData';
 
 describe('contacts', () => {
   const nanId = 'hkjkj';
@@ -8,23 +10,8 @@ describe('contacts', () => {
   const maxOutId = 5000000000000000; // to cause a sequelize error
 
   beforeAll(async () => {
-    await Contact.sync({ force: true });
-    await Contact.bulkCreate(
-      [
-        {
-          name: 'Ade',
-          phoneNumber: '08037897567',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Emmanuel',
-          phoneNumber: '0907468903',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }
-      ]
-    );
+    await Contact.bulkCreate(testData.contacts);
+    await Message.bulkCreate(testData.messages);
   });
 
   afterAll(() => {
@@ -42,7 +29,7 @@ describe('contacts', () => {
         .send(contact);
       expect(response.statusCode).toEqual(201);
       expect(response.body).toHaveProperty(['contact']);
-      expect(response.body.contact.id).toBe(3);
+      expect(response.body.contact.id).toBe(5);
       expect(response.body.contact.name).toEqual('Johnson');
       expect(response.body.contact.phoneNumber).toEqual('07045673890');
     });
@@ -81,7 +68,7 @@ describe('contacts', () => {
       const response = await request(app).get('/api/v1/contacts');
       expect(response.statusCode).toEqual(200);
       expect(response.body).toHaveProperty(['contacts']);
-      expect(response.body.contacts.length).toBe(3);
+      expect(response.body.contacts.length).toBe(5);
       expect(response.body.contacts[0].name).toEqual('Ade');
       expect(response.body.contacts[0].phoneNumber).toEqual('08037897567');
     });
@@ -94,7 +81,7 @@ describe('contacts', () => {
       expect(response.body.error[0]).toBe('id must be a number');
     });
 
-    it('should display an internal server error message if there is a sequelize error', async () => {
+    it('should return an internal server error message if there is a sequelize error', async () => {
       expect.assertions(3);
       const response = await request(app).get(`/api/v1/contacts/${maxOutId}`);
       expect(response.statusCode).toEqual(500);
@@ -123,7 +110,6 @@ describe('contacts', () => {
   });
 
   describe('/DELETE requests', () => {
-    const contactId = 3;
     it('should return a 400 status if no id is sent in the request', async () => {
       expect.assertions(3);
       const response = await request(app).delete(`/api/v1/contacts/${nanId}`);
@@ -149,6 +135,7 @@ describe('contacts', () => {
     });
 
     it('should delete a contact when requested with an id', async () => {
+      const contactId = 3;
       expect.assertions(3);
       const response = await request(app).delete(`/api/v1/contacts/${contactId}`);
       expect(response.statusCode).toEqual(200);
