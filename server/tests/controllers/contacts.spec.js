@@ -1,5 +1,4 @@
 import request from 'supertest';
-import { mapSeries } from 'bluebird';
 import app from '../../../app';
 import { Contact } from '../../models';
 import { Message } from '../../models';
@@ -11,12 +10,15 @@ describe('contacts', () => {
   const maxOutId = 5000000000000000; // to cause a sequelize error
 
   beforeAll(async () => {
-    await mapSeries(testData.contacts, async (contact) => {
-      await Contact.create(contact);
-    });
-    await mapSeries(testData.messages, async (message) => {
-      await Message.create(message);
-    });
+    await Contact.create(testData.contacts[0])
+      .then(() => Contact.create(testData.contacts[1]))
+      .then(() => Contact.create(testData.contacts[2]))
+      .then(() => Contact.create(testData.contacts[3]))
+      .then(() => Message.create(testData.messages[0]))
+      .then(() => Message.create(testData.messages[1]))
+      .then(() => Message.create(testData.messages[2]))
+      .then(() => Message.create(testData.messages[3]))
+      .then(() => Message.create(testData.messages[4]));
   });
 
   afterAll(() => {
