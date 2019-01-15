@@ -4,21 +4,22 @@ import { Contact } from '../../models';
 import { Message } from '../../models';
 import testData from '../testData';
 
-describe('contacts', () => {
+const contactTests = async () => {
   const nanId = 'hkjkj';
   const notExistId = 300;
   const maxOutId = 5000000000000000; // to cause a sequelize error
 
-  beforeAll(async () => {
-    await Contact.create(testData.contacts[0])
-      .then(() => Contact.create(testData.contacts[1]))
-      .then(() => Contact.create(testData.contacts[2]))
-      .then(() => Contact.create(testData.contacts[3]))
-      .then(() => Message.create(testData.messages[0]))
-      .then(() => Message.create(testData.messages[1]))
-      .then(() => Message.create(testData.messages[2]))
-      .then(() => Message.create(testData.messages[3]))
-      .then(() => Message.create(testData.messages[4]));
+  beforeAll(async (done) => {
+    await Contact.create(testData.contacts[0]);
+    await Contact.create(testData.contacts[1]);
+    await Contact.create(testData.contacts[2]);
+    await Contact.create(testData.contacts[3]);
+    await Message.create(testData.messages[0]);
+    await Message.create(testData.messages[1]);
+    await Message.create(testData.messages[2]);
+    await Message.create(testData.messages[3]);
+    await Message.create(testData.messages[4]);
+    done();
   });
 
   afterAll(() => {
@@ -150,4 +151,6 @@ describe('contacts', () => {
       expect(response.body.message).toBe('contact has been succefully deleted');
     });
   });
-});
+};
+
+export default contactTests;

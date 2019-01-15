@@ -3,7 +3,7 @@ import { Message } from '../../models';
 import app from '../../../app';
 import testData from '../testData';
 
-describe('Messages', () => {
+const messageTest = async () => {
   const nanId = 'hkjkj';
   const notExistId = 300;
   const maxOutId = 5000000000000000; // to cause a sequelize error
@@ -206,4 +206,6 @@ describe('Messages', () => {
       expect(response.body.message).toBe('sms has been succefully deleted');
     });
   });
-});
+};
+
+export default messageTest;

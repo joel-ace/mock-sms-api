@@ -20,8 +20,8 @@
     "build": "babel app.js -d dist && babel server -d dist/server",
     "dev": "nodemon --exec babel-node app.js",
     "start": "babel-node app.js",
-    "test": "NODE_ENV=test npm run migrate:test && jest --forceExit --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test:dev": "NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "NODE_ENV=test npm run migrate:test && jest server/tests/controllers/index.spec.js --forceExit --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:dev": "NODE_ENV=test jest jest server/tests/controllers/index.spec.js --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "Joel Akwevagbe",
   "license": "MIT",
