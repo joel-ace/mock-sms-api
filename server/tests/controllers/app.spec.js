@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../../../app';
 
-describe('App', () => {
+const appTest = () => {
   describe('index route', () => {
     it('should return a 200 status and welcome message', async () => {
       const response = await request(app).get('/api/v1/');
@@ -23,4 +23,6 @@ describe('App', () => {
       );
     });
   });
-});
+};
+
+export default appTest;
