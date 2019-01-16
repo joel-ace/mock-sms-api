@@ -148,7 +148,7 @@ const contactTests = async () => {
       const response = await request(app).delete(`/api/v1/contacts/${contactId}`);
       expect(response.statusCode).toEqual(200);
       expect(response.body).toHaveProperty(['message']);
-      expect(response.body.message).toBe('contact has been succefully deleted');
+      expect(response.body.message).toBe('contact has been successfully deleted');
     });
   });
 };

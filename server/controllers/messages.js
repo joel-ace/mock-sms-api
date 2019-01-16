@@ -143,6 +143,7 @@ export const receivedMessagesByContact = async (req, res) => {
       attributes: { exclude: ['senderId', 'receiverId', 'updatedAt'] },
       where: {
         receiverId: id,
+        status: 'true',
       },
       include: [{
         model: Contact,
