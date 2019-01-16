@@ -1,0 +1,693 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Mock-SMS API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+.logo {
+  color: #fff;
+	margin: 30px 10px;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <h1 class="logo">Mock-sms API</h1>
+        <div class="lang-selector">
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#development" class="toc-h2 toc-link" data-title="Introduction">Development</a>
+                  </li>
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Introduction">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#api-summary" class="toc-h2 toc-link" data-title="Introduction">API Summary</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#contacts" class="toc-h1 toc-link" data-title="Contacts">Contacts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-contact" class="toc-h2 toc-link" data-title="Contacts">Create Contact</a>
+                  </li>
+                  <li>
+                    <a href="#list-contacts" class="toc-h2 toc-link" data-title="Contacts">List Contacts</a>
+                  </li>
+                  <li>
+                    <a href="#get-contact" class="toc-h2 toc-link" data-title="Contacts">Get Contact</a>
+                  </li>
+                  <li>
+                    <a href="#get-contact-sent-messages" class="toc-h2 toc-link" data-title="Contacts">Get contact sent messages</a>
+                  </li>
+                  <li>
+                    <a href="#get-contact-received-messages" class="toc-h2 toc-link" data-title="Contacts">Get contact received messages</a>
+                  </li>
+                  <li>
+                    <a href="#delete-contact" class="toc-h2 toc-link" data-title="Contacts">Delete Contact</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#messages" class="toc-h1 toc-link" data-title="Messages">Messages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#send-message" class="toc-h2 toc-link" data-title="Messages">Send Message</a>
+                  </li>
+                  <li>
+                    <a href="#get-message" class="toc-h2 toc-link" data-title="Messages">Get Message</a>
+                  </li>
+                  <li>
+                    <a href="#delete-message" class="toc-h2 toc-link" data-title="Messages">Delete Message</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><span>&copy; 2019 Joel Akwevagbe</span></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Mock-SMS API is a mock sms management system API that allows easy operations for messages. Contacts can create, retrieve and delete messages. Contacts can also see their sent and received messages</p>
+<h2 id='development'>Development</h2>
+<p>The application was developed with <a href="http://nodejs.org/">NodeJs</a> and <a href="http://expressjs.com/">Express</a> for routing. <a href="http://postgresql.com/">Postgres</a> is the database used and sequelize is the ORM used.</p>
+<h2 id='installation'>Installation</h2>
+<p>Follow the steps below to setup a local development environment. First ensure you have <a href="https://www.postgresql.org/">Postgresql</a> installed, and a version of <a href="http://nodejs.org/">Node.js</a> equal or greater than v6.8.0.</p>
+
+<ol>
+<li>Clone the repository from a terminal <code>git clone https://github.com/joel-ace/mock-sms-api.git</code>.</li>
+<li>Change into the mock-sms-api directory <code>cd mock-sms-api</code></li>
+<li>Rename <code>.env_sample</code> to <code>.env</code> and add the required DATABASE URL.</li>
+<li>Install project dependencies <code>npm install</code></li>
+<li>Start the express development server <code>npm run dev</code>.</li>
+</ol>
+<h2 id='api-summary'>API Summary</h2><h3 id='contacts'>Contacts</h3>
+<table><thead>
+<tr>
+<th>EndPoint</th>
+<th>Functionality</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>POST /api/v1/contacts/</td>
+<td>Creates a new contact.</td>
+</tr>
+<tr>
+<td>GET /api/v1/contacts/</td>
+<td>Gets all contacts.</td>
+</tr>
+<tr>
+<td>GET /api/v1/contacts/:id</td>
+<td>Gets contact using it&#39;s id.</td>
+</tr>
+<tr>
+<td>DELETE /api/v1/contacts/:id</td>
+<td>Deletes contact</td>
+</tr>
+<tr>
+<td>GET /api/v1/contacts/:id/sms/sent</td>
+<td>Gets all messages sent by a contact</td>
+</tr>
+<tr>
+<td>GET /api/v1/contacts/:id/sms/received</td>
+<td>Gets all messages received by a contact</td>
+</tr>
+</tbody></table>
+<h3 id='messages'>Messages</h3>
+<table><thead>
+<tr>
+<th>EndPoint</th>
+<th>Functionality</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>POST /api/v1/messages/</td>
+<td>Creates a new message.</td>
+</tr>
+<tr>
+<td>GET /api/v1/messages/:id</td>
+<td>Gets a message using it&#39;s id.</td>
+</tr>
+<tr>
+<td>DELETE /messages/:id</td>
+<td>Deletes message</td>
+</tr>
+</tbody></table>
+<h1 id='contacts'>Contacts</h1><h2 id='create-contact'>Create Contact</h2>
+<p>Create a new contact</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"John Doe"</span><span class="p">,</span>
+  <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"08057935683"</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"contact"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"John Doe"</span><span class="p">,</span>
+        <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"08057935683"</span><span class="p">,</span>
+        <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2019-01-15T15:29:11.782Z"</span><span class="p">,</span>
+        <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-15T15:29:11.782Z"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='request'>Request</h3>
+<ul>
+<li>Endpoint: POST: <code>/api/v1/contacts</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h3 id='response'>Response</h3>
+<ul>
+<li>Status: <code>201: Created</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='list-contacts'>List Contacts</h2>
+<p>List all contacts</p>
+
+<blockquote>
+<p>Sample JSON structured response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"contacts"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"John"</span><span class="p">,</span>
+            <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"07064619459"</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:24.599Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:24.599Z"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"james"</span><span class="p">,</span>
+            <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"08093689234"</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:41.879Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:41.879Z"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Ada"</span><span class="p">,</span>
+            <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"08025829745"</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-15T15:29:11.782Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2019-01-15T15:29:11.782Z"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-2'>Request</h3>
+<ul>
+<li>Endpoint: GET: <code>/api/v1/contacts</code></li>
+<li>Admin only</li>
+</ul>
+<h3 id='response-2'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='get-contact'>Get Contact</h2>
+<p>Get a contact using the id.</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"contact"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"lois"</span><span class="p">,</span>
+        <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"08057829804"</span><span class="p">,</span>
+        <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:41.879Z"</span><span class="p">,</span>
+        <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:41.879Z"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-3'>Request</h3>
+<ul>
+<li>Endpoint: GET: <code>/api/v1/contacts/:id</code></li>
+</ul>
+<h3 id='response-3'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='get-contact-sent-messages'>Get contact sent messages</h2>
+<p>Get all messages a contact has sent to other contacts</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"sms"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"a test message"</span><span class="p">,</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:53.473Z"</span><span class="p">,</span>
+            <span class="s2">"sender"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"lois"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"34324234324"</span>
+            <span class="p">},</span>
+            <span class="s2">"receiver"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"joel"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"45435435435"</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"test message, this is"</span><span class="p">,</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-16T01:36:04.338Z"</span><span class="p">,</span>
+            <span class="s2">"sender"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"lois"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"34324234324"</span>
+            <span class="p">},</span>
+            <span class="s2">"receiver"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Adeybee"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"45435435435"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-4'>Request</h3>
+<ul>
+<li>Endpoint: PUT: <code>/api/v1/contacts/:id/sent</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h3 id='response-4'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='get-contact-received-messages'>Get contact received messages</h2>
+<p>Get all messages a contact has received from other contacts</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"sms"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+            <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"a test message"</span><span class="p">,</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-14T13:57:53.473Z"</span><span class="p">,</span>
+            <span class="s2">"sender"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"James"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"34324234324"</span>
+            <span class="p">},</span>
+            <span class="s2">"receiver"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"lois"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"45435435435"</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+            <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"test message, this is"</span><span class="p">,</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-16T01:36:04.338Z"</span><span class="p">,</span>
+            <span class="s2">"sender"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Brown"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"34324234324"</span>
+            <span class="p">},</span>
+            <span class="s2">"receiver"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"lois"</span><span class="p">,</span>
+                <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"45435435435"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-5'>Request</h3>
+<ul>
+<li>Endpoint: PUT: <code>/api/v1/contacts/:id/received</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h3 id='response-5'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='delete-contact'>Delete Contact</h2>
+<p>Deletes a contact</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"contact has been successfully deleted"</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-6'>Request</h3>
+<ul>
+<li>Endpoint: DELETE: <code>/api/v1/contacts/:id</code></li>
+</ul>
+<h3 id='response-6'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h1 id='messages'>Messages</h1><h2 id='send-message'>Send Message</h2>
+<p>Sends a message to a contact</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"senderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"receiverId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"you need people like me"</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"sms"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"status"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">"senderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"receiverId"</span><span class="p">:</span> <span class="mi">12</span>
+        <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"you need people like me"</span><span class="p">,</span>
+        <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2019-01-16T02:14:38.216Z"</span><span class="p">,</span>
+        <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-16T02:14:38.216Z"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='request'>Request</h3>
+<ul>
+<li>Endpoint: POST: <code>/api/v1/messages</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h3 id='response'>Response</h3>
+<ul>
+<li>Status: <code>201: Created</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='get-message'>Get Message</h2>
+<p>Get a message using the message id.</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"sms"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"sing a song"</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2019-01-16T01:36:05.214Z"</span><span class="p">,</span>
+        <span class="s2">"sender"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Usain"</span><span class="p">,</span>
+            <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"34324234324"</span>
+        <span class="p">},</span>
+        <span class="s2">"receiver"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Arthur"</span><span class="p">,</span>
+            <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"45435435435"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-2'>Request</h3>
+<ul>
+<li>Endpoint: GET: <code>/api/v1/messages/:id</code></li>
+</ul>
+<h3 id='response-2'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h2 id='delete-message'>Delete Message</h2>
+<p>Delete a message</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"sms has been succefully deleted"</span>
+<span class="p">}</span>
+</code></pre><h3 id='request-3'>Request</h3>
+<ul>
+<li>Endpoint: DELETE: <code>/api/v1/messages/:id</code></li>
+</ul>
+<h3 id='response-3'>Response</h3>
+<ul>
+<li>Status: <code>200: OK</code></li>
+<li>Body <code>(application/json)</code></li>
+</ul>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">If you are new to HTTP status codes, you can use this as a reference to know what the returned error status codes used in Mock-SMS API means.</aside>
+
+<p>Mock-SMS API uses the following code error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- You&#39;re sending a request with bad/not properly formatted parameters</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- What you requested for could not be found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

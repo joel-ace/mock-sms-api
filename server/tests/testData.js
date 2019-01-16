@@ -63,7 +63,7 @@ export default {
       senderId: 2,
       receiverId: 1,
       message: 'this is yet another message',
-      status: false,
+      status: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     },

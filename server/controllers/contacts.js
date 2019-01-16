@@ -102,7 +102,7 @@ export const deleteContact = async (req, res) => {
 
     await contact.destroy();
     return res.status(200).send({
-      message: 'contact has been succefully deleted',
+      message: 'contact has been successfully deleted',
     });
   } catch (error) {
     return handleCatchError(res);

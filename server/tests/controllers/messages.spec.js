@@ -83,7 +83,7 @@ const messageTest = async () => {
       expect(response.body).toHaveProperty(['sms']);
       expect(response.body.sms.sender.name).toEqual(testData.contacts[1].name);
       expect(response.body.sms.receiver.name).toEqual(testData.contacts[0].name);
-      expect(response.body.sms.status).toBeFalsy();
+      expect(response.body.sms.status).toBeTruthy();
       expect(response.body.sms.message).toEqual(testData.messages[4].message);
     });
 
@@ -159,7 +159,7 @@ const messageTest = async () => {
       expect(response.body.message).toBe('We encountered an error. Please try again later');
     });
 
-    it('should return an array of messages received by a contact', async () => {
+    it('should return an array of messages received by a contact (Only messages with status true)', async () => {
       const contactId = 1;
       expect.assertions(6);
       const response = await request(app).get(`/api/v1/contacts/${contactId}/sms/received`);
