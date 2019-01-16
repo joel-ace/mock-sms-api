@@ -5,7 +5,7 @@
 A mock SMS Management API.
 
 ## API Documentation
-The API has routes, each dedicated to a single task that uses HTTP response codes to indicate API status and errors. View full API documentation [here](https://#/)
+The API has routes, each dedicated to a single task that uses HTTP response codes to indicate API status and errors. View full API documentation [here](https://mock-sms-api.herokuapp.com/)
 
 
 ## Technologies Used
@@ -36,8 +36,8 @@ The API has routes, each dedicated to a single task that uses HTTP response code
 
 ## Start for development/Local
 ```
-npm start
-it should run on `localhost:3000`
+npm start - it should run on `localhost:3000`
+npm run dev - it should run on `localhost:3000` using nodemon
 ```
 
 ## Testing
